@@ -1,0 +1,20 @@
+{
+  "name": "ftl_app_frontend",
+  "version": "1.0.0",
+  "description": "FTL application front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/sedatDemiriz/ftl_app_frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1"
+  }
+}
