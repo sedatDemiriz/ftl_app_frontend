@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import React, { Component } from 'react';
+// import { render } from 'react-dom';
+// import './style.css'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const axios = require('axios')
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+axios.get('http://127.0.0.1:8000/api-runs/')
+  .then(res => console.log(res.data.results))
+
+// axios.get('127.0.0.1:8000/api-runs/').then(resp => {
+//   console.log(resp.data);
+// });
+
+// async function makeGetRequest() {
+//   let res = await axios.get('/api-runs')
+//   let data = res.data
+//   console.log(data)
+// }
+
+// makeGetRequest()
