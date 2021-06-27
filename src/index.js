@@ -12,46 +12,89 @@ const axios = require('axios')
 
 // const element = <Test name='Sedat'/>
 
-const getData = async () => await axios.get('http://127.0.0.1:8000/api-runs/')
+// const getData = async () => 
+// await axios.get('http://127.0.0.1:8000/api-runs/')
+// .then(
+//   function(response) {
+//     return response
+//   }
+// )
 
-getData().then(response => console.log(response.data.results))
+async function getRunsResponse() {
+  const response = await axios.get('http://127.0.0.1:8000/api-runs/')
+  // console.log(response.data)
+  return response.data
+}
 
-function App() {
+const test = getRunsResponse()
+
+// getData().then(response => response)
+
+function App(props) {
+
+    console.log(props)
+    // Defining columns of the table
+    // Datetime, username, diff, ship_used, result, scrap, ships, beacons, crew, 
+    const columns = React.useMemo (
+      () => [
+        {
+          Header: 'Submitted at',
+          accessor: 'datetime',
+        },
+        {
+          Header: 'Player',
+          accessor: 'username',
+        },
+        {
+          Header: 'Difficulty',
+          accessor: 'difficulty',
+        },
+        {
+          Header: 'Ship Used',
+          accessor: 'ship_used',
+        },
+        {
+          Header: 'Result',
+          accessor: 'result',
+        },
+        {
+          Header: 'Scrap Collected',
+          accessor: 'scrap',
+        },
+        {
+          Header: 'Ships Defeated',
+          accessor: 'ships',
+        },
+        {
+          Header: 'Beacons Explored',
+          accessor: 'beacons',
+        },
+        {
+          Header: 'Crew Hired',
+          accessor: 'crew',
+        },
+      ],
+      []
+    )
 
     // Defining data arows
     const data = React.useMemo(
     () => [
       {
-        col1: 'Hello',
-        col2: 'World',
-      },
-      {
-        col1: 're',
-        col2: 'act',
-      },
-      {
-        col1: 'ta',
-        col2: 'ble',
+        col1: props.datetime,
+        col2: props.username,
+        col3: props.difficulty,
+        col4: props.ship_used,
+        col5: props.result,
+        col6: props.scrap_collected,
+        col7: props.ships_defeated,
+        col8: props.beacons_explored,
+        col9: props.crew_hired,
+
       },
     ],
-    []
+    [props.datetime, props.username, props.difficulty, props.ship_used, props.result, props.scrap_collected, props.ships_defeated, props.beacons_explored, props.crew_hired]
     )
-  
-    // Defining columns of the table
-    const columns = React.useMemo (
-      () => [
-        {
-          Header: 'Column 1',
-          accessor: 'col1',
-        },
-        {
-          Header: 'Column 2',
-          accessor: 'col2',
-        },
-      ],
-      []
-    )
-    
 
     const {
       getTableProps,
@@ -59,7 +102,11 @@ function App() {
       headerGroups,
       rows,
       prepareRow,
-    } = useTable({ columns, data })
+    } = useTable(
+          { columns, 
+            data 
+          }
+        )
 
     return (
       <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
@@ -110,7 +157,7 @@ function App() {
 }
 
 render(
-  <App />,
+  <App data={ test.data }/>,
   document.getElementById('root')
 )
 
