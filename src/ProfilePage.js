@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import RunsTable from './RunsTable'
 
 const axios = require('axios')
 
@@ -21,6 +20,7 @@ const ProfilePage = (props) => {
             <div>
                 <p>Best Streak</p>
                 <p>Recent Streak</p>
+                <p>Mods + Tools Used</p>
                 <div>
                     <p>Ship Tierlist</p>
                     <p>Weapon Tierlist</p>
