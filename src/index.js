@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import LoginForm from './Login'
 import RunsTable from './RunsTable'
 
 // render(
@@ -12,6 +13,6 @@ const App = () => {
 }
 
 render(
-  <App />,
+  <LoginForm />,
   document.getElementById('root')
 )
